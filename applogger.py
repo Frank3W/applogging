@@ -20,8 +20,6 @@ def log_hanlder(queue):
         else:
             logger = logging.getLogger(log_record.name)
             # Be cautious about the infinite loop that may happen if logger.hanlde invokes thesame queue 
-            print(log_record)
-            print(log_record.msg)
             logger.handle(log_record)
 
 
