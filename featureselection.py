@@ -1,6 +1,7 @@
 import logging
 import time
 
+# define logger for this module
 logger = logging.getLogger(__name__)
 
 def featureselection():

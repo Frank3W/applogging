@@ -5,7 +5,7 @@ APPLOG_LEVEL = logging.DEBUG
 APPLOG_FILE = 'app.log'
 
 def log_hanlder(queue):
-    """Log handling function by a queue.
+    """Log handling using a queue.
 
     Args:
         queue: A queue in multiprocess module that is thread-safe. The get function of the queue supports blocking.
@@ -19,7 +19,7 @@ def log_hanlder(queue):
             break
         else:
             logger = logging.getLogger(log_record.name)
-            # Be cautious about the infinite loop that may happen if logger.hanlde invokes thesame queue 
+            # Be cautious about the infinite loop that may happen if logger.hanlde invokes the same queue 
             logger.handle(log_record)
 
 
@@ -27,8 +27,10 @@ def get_formatter():
     return logging.Formatter('[%(asctime)s %(processName)s %(threadName)s LOGGER - %(name)s] %(levelname)s - %(message)s')
 
 def add_streamhandler(loggername=None, rm_otherhanlders=False):
+    """Adds stream handler to a logger.
+    """
     if loggername is None:
-        # gets root logger
+        # root logger
         logger = logging.getLogger()
     else:
         logger = logging.getLogger(loggername)
@@ -43,8 +45,10 @@ def add_streamhandler(loggername=None, rm_otherhanlders=False):
     return logger
 
 def add_filehandler(loggername=None, filename=None, rm_otherhandlers=False):
+    """Adds file handler to a logger.
+    """
     if loggername is None:
-        # gest root logger
+        # root logger
         logger = logging.getLogger()
     else:
         logger = logging.getLogger(loggername)
@@ -62,8 +66,10 @@ def add_filehandler(loggername=None, filename=None, rm_otherhandlers=False):
     return logger
 
 def add_queuehandler(queue, loggername=None, add_formatter=True, rm_otherhanlders=False):
+    """Adds queue handler to a logger.
+    """
     if loggername is None:
-        # gest root logger
+        # root logger
         logger = logging.getLogger()
     else:
         logger = logging.getLogger(loggername)

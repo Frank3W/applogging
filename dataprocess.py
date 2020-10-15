@@ -2,6 +2,7 @@ import logging
 import time
 import random
 
+# define logger for this module
 logger = logging.getLogger(__name__)
 
 def dataprocess():
